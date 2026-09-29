@@ -3,7 +3,8 @@
 1. **INSTALACIÓN DOCKER**
 
 Nos dirigimos a la página oficial Docker y seguimos los pasos a instalar, es decir, los comandos que nos dejan.  
-![][image1]  
+![][image1]  <img width="527" height="441" alt="imagen" src="https://github.com/user-attachments/assets/329f58f2-5950-471a-8e25-cd5704b2353a" />
+
 ![][image2]  
 ![][image3]  
 ![][image4]  
