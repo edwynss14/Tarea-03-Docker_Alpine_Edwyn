@@ -38,7 +38,7 @@ docker run \-it \--name dam\_alp1 alpine:3.24.2 sh
 La combinación de ambas, es decir, \-it junto con la shell nos permite escribir e interactuar dentro del contenedor
 
 4. **CONSULTAR IP DE DAM\_ALP1 Y PING A GOOGLE**
-
+Sin salir de dam_alp1 escribimos: "ip a"
 <img width="736" height="239" alt="imagen" src="https://github.com/user-attachments/assets/9428e7ef-52da-422f-9b43-6c509195a5b2" />
 La IP de mi contenedor es 172.17.0.2  
 Ahora haremos ping con google, para ello ejecutamos:  
