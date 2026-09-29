@@ -3,35 +3,34 @@
 1. **INSTALACIÓN DOCKER**
 
 Nos dirigimos a la página oficial Docker y seguimos los pasos a instalar, es decir, los comandos que nos dejan.  
-![][image1]  <img width="527" height="441" alt="imagen" src="https://github.com/user-attachments/assets/329f58f2-5950-471a-8e25-cd5704b2353a" />
-
-![][image2]  
-![][image3]  
-![][image4]  
-![][image5]  
-![][image6]
+<img width="527" height="441" alt="imagen" src="https://github.com/user-attachments/assets/329f58f2-5950-471a-8e25-cd5704b2353a" />
+<img width="751" height="563" alt="imagen" src="https://github.com/user-attachments/assets/29283f08-77a8-4328-97e4-5bc79e60be40" />
+<img width="751" height="563" alt="imagen" src="https://github.com/user-attachments/assets/52c1fa80-0d87-4240-aa14-79977aa5d5c4" />
+<img width="761" height="561" alt="imagen" src="https://github.com/user-attachments/assets/14527e72-cfaa-40bc-98d9-8618be5313f3" />
+<img width="672" height="533" alt="imagen" src="https://github.com/user-attachments/assets/d81cb8b1-e756-4e38-80e0-1ec30f321781" />
+<img width="760" height="322" alt="imagen" src="https://github.com/user-attachments/assets/61d2abf9-41e5-4d8d-84f0-ec924588cda8" />
 
 Siguiente paso descargamos la imagen Alpine [https://hub.docker.com/\_/alpine](https://hub.docker.com/_/alpine) y ponemos este código docker pull alpine  
-![][image7]  
+<img width="753" height="192" alt="imagen" src="https://github.com/user-attachments/assets/4330a671-c33f-4d6e-9202-b39c2c2f6fbc" />
 Una vez que fijamos la versión, elegimos una desde la web, en mi caso esta: docker pull alpine:3.24.2  
-![][image8]  
+<img width="753" height="192" alt="imagen" src="https://github.com/user-attachments/assets/b895c04e-d974-46f0-b471-3ce62401f725" />
 A continuación comprobamos la imagen con el comando: “docker images”  
-![][image9]
+<img width="759" height="229" alt="imagen" src="https://github.com/user-attachments/assets/551acefb-7cd3-4a2b-8dad-c380fc251b9e" />
 
 2. **CREACIÓN DE CONTENEDOR SIN NOMBRE Y SIN ARRANCAR**
 
 Creamos sin nombre y sin arrancarlo. Para ello creamos el contenedor con el comando:  
 docker create alpine 3.24.2  
-![][image10]  
+<img width="755" height="114" alt="imagen" src="https://github.com/user-attachments/assets/8b99dc06-f3f3-4659-bef6-18496c87209f" />
 Ahora listamos todos los contenedores con “docker ps \-a”  
-![][image11]  
+<img width="750" height="105" alt="imagen" src="https://github.com/user-attachments/assets/132b5380-6e1a-4bda-937c-fda61c965938" />
 Como vemos queda en estado creado “CREATED” y por defecto docker asigna los nombres automáticamente en mi caso le ha asignado “pedantic\_fermat”
 
 3. **CREACIÓN DE DAM\_ALP1 CON UNA SHELL**
 
 Creamos y arrancaremos dam\_alp1 en una shell, para ello ejecutamos:  
 docker run \-it \--name dam\_alp1 alpine:3.24.2 sh  
-![][image12]  
+<img width="745" height="67" alt="imagen" src="https://github.com/user-attachments/assets/c64121fc-3ec9-4ea4-8d72-659ee875a8b1" />
 ¿Qué opciones necesitaremos para escribir adentro? Las siguientes:
 
 \-i: Mantiene la entrada estándar abierta para poder mandar comandos  
@@ -40,18 +39,18 @@ La combinación de ambas, es decir, \-it junto con la shell nos permite escribir
 
 4. **CONSULTAR IP DE DAM\_ALP1 Y PING A GOOGLE**
 
-![][image13]  
+<img width="736" height="239" alt="imagen" src="https://github.com/user-attachments/assets/9428e7ef-52da-422f-9b43-6c509195a5b2" />
 La IP de mi contenedor es 172.17.0.2  
 Ahora haremos ping con google, para ello ejecutamos:  
 ping \-c 4 [google.com](http://google.com) (-c4 es para generar 4 respuestas de conexion osea 4 llamadas para que responda, y así evitamos que siga todo el rato y no lo tengamos que parar de manera manual)  
-![][image14]
+<img width="760" height="243" alt="imagen" src="https://github.com/user-attachments/assets/e54ca19b-f128-48a5-8b97-518153aa438f" />
 
 5. **CREACIÓN DE DAM\_ALP2, PING UNO A OTRO POR IP Y NOMBRE**
 
 Para dejar dam\_alp1 funcionando en segundo plano ejecutamos ctrl \+ P y luego ctrl \+ Q  
 A continuación creamos el contenedor dam\_alp2, que es como los pasos anteriores similar mismo comando:  
 docker run \-it \--name dam\_alp2 alpine:3.24.2 sh  
-![][image15]  
+<img width="753" height="61" alt="imagen" src="https://github.com/user-attachments/assets/cda39302-853f-4cd6-a5c5-73a4cb37e1c7" />
 Ahora para realizar pings desde dam\_alp2 a dam\_alp1 ejecutamos ping \-c4 (la IP que nos dio antes en dam\_alp1)
 
 ping \-c4 172.17.0.2
@@ -59,8 +58,8 @@ ping \-c4 172.17.0.2
 De otra forma sería poniendo el nombre del contenedor es decir:  
 ping \-c4 dam\_alp1
 
-![][image16]  
-![][image17]
+<img width="752" height="278" alt="imagen" src="https://github.com/user-attachments/assets/29d2f701-a906-4beb-ba13-e77b74595466" />
+<img width="748" height="85" alt="imagen" src="https://github.com/user-attachments/assets/347741ba-c236-4ff8-97be-3192fe1192f0" />
 
 El ping por nombre falla ya que, Docker no cuenta con servicio de resolución DNS automática por nombre de contenedor. Para solucionarlo deberíamos crear una red personalizada mediante docker network create
 
@@ -68,20 +67,20 @@ El ping por nombre falla ya que, Docker no cuenta con servicio de resolución DN
 
 Para averiguar el consumo de memoria de ambos en marcha para ello debemos primero desacoplar dam\_apl2 pulsando ctrl \+ P y ctrl \+ Q. Luego ejecutamos:  
 docker stats  
-![][image18]  
+<img width="748" height="59" alt="imagen" src="https://github.com/user-attachments/assets/f1bca0a8-b0d2-4ef2-9e4b-e3679e5f7ba7" />
 Este comando muestra métricas en tiempo real sobre el uso de CPU , memoria, red, y disco de todos los contenedores en ejecución
 
 7. **SALIDA CON EXIT Y COMPROBACIÓN**
 
 Para entrar de nuevo y salir con exit escribimos:  
 docker attach dam\_alp1 y luego exit  
-![][image19]  
+<img width="495" height="102" alt="imagen" src="https://github.com/user-attachments/assets/0d802a59-8786-4303-bba9-2fbbd933d621" />
 Repetimos lo mismo con dam\_alp2  
-![][image20]  
+<img width="495" height="102" alt="imagen" src="https://github.com/user-attachments/assets/6ef636d6-c1de-441f-acf3-865fa6db6475" /> 
 Ahora comprobamos los estados de los contenedores y volvemos a ejecutar docker stats  
-![][image21]
+<img width="753" height="111" alt="imagen" src="https://github.com/user-attachments/assets/25b96bef-afee-4857-96e8-06b1aba81736" />
 
-![][image22]
+<img width="751" height="120" alt="imagen" src="https://github.com/user-attachments/assets/8b4d6b64-cabd-42b1-b7b9-60763cff3681" />
 
 Al salir con exit, el proceso principal del contenedor finaliza. Ambos contenedores pasaron al estado Exited (0). Y ahora al ejecutar docker stats , la lista aparece vacía, esto se debe a que únicamente reporta el consumo de recursos de los contenedores en ejecución 
 
@@ -90,8 +89,8 @@ Al salir con exit, el proceso principal del contenedor finaliza. Ambos contenedo
 Para calcular el espacio ocupado en disco debemos ejecutar los siguientes comandos:  
 docker system df  
 docker ps \-as  
-![][image23]  
-![][image24]  
+<img width="745" height="176" alt="imagen" src="https://github.com/user-attachments/assets/ea164ce6-c5b1-4cfd-acf7-029b68c6dc36" />
+<img width="750" height="100" alt="imagen" src="https://github.com/user-attachments/assets/fd2fc493-a83c-4ab4-9d14-65b57eada940" />
 El espacio total en imágenes ocupa 170.5MB y los contenedores ocupan menos, unos 1.167kB. La diferencia entre ellos, es que, las imágenes guardan el sistema operativo y las aplicaciones base, ocupan un espacio fijo e inmutable en disco, en cambio los contenedores, añade una capa sola superior ligera donde guardan los cambios y archivos, es debido a eso que su peso propio es de unos bytes.
 
 **BIBLIOGRAFÍA DOCKER ALPINE GUÍA DE COMANDOS**
